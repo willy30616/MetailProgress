@@ -79,7 +79,7 @@
           width="80"
         >
         </el-table-column>
-        <el-table-column prop="b_process" label="製成進度" >
+        <el-table-column prop="b_process" label="製程進度" >
           <template slot-scope="scope">
             <el-badge
               v-for="item in scope.row.b_process"
