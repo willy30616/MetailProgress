@@ -1,32 +1,65 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <router-view/>
   </div>
 </template>
 
+<script>
+export default {
+  name: "App",
+  components: {
+  },
+};
+</script>
+
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+body {
+  margin: 0;
+  padding: 0;
+  background: #102a43;
+  background-image: url("https://uploads.codesandbox.io/uploads/user/c3fb8e8a-35ea-4232-b5d6-0f3c5373510b/LVs7-dots.png");
+  background-size: contain;
+}
+.footer,
+.header {
+  padding: 20px 20px;
+  color: #f0f4f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1,
+  h2,
+  h3 {
+    color: #f0f4f8;
+    padding: 0;
+    margin: 0;
+  }
+  .links {
+    display: flex;
+    font-family: "Open Sans";
+    span {
+      padding: 0 10px;
+      font-size: 18px;
+      border-right: 1px solid #9fb3c8;
+      &:last-child {
+        border-right: none;
+      }
     }
   }
+
 }
+
+
+
 </style>
