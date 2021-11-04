@@ -79,7 +79,8 @@
           width="80"
         >
         </el-table-column> -->
-        <el-table-column prop="b_process" label="製程進度" fixed="right">
+        <el-table-column prop="b_process" label="製程進度" >
+          <!-- fixed="right" -->
           <template slot-scope="scope">
             <!-- {{scope.row}} -->
             <el-badge
@@ -113,7 +114,6 @@
         stripe
         style="width: 100% "
         border
-        
         :row-style="{ height: '80px' }"
         :header-cell-style="{
         'background-color': '#4c5870',
