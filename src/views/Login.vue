@@ -1,11 +1,14 @@
 <template>
   <div class="login">
     <el-card>
-      <h2>凱德板金系統進度查詢</h2>
+        <div class="top">
+          <img src="../assets/img/cadtech.png" alt="" style="width:30%">
+            <h2 class="item">凱群系統登入</h2>
+        </div>
       <el-form
         class="login-form"
         :model="model"
-        :rules="rules"
+        
         ref="form"
         @submit.native.prevent="login"
       >
@@ -32,13 +35,12 @@
             class="login-button"
             type="primary"
             native-type="submit"
-            block
-           
+            block           
             >Login</el-button
           >
         </el-form-item>
-        <a class="forgot-password" href="https://oxfordinformatics.com/"
-          >Forgot password ?</a
+        <a class="forgot-password" href="http://www.cadtech.com.tw/"
+          >Cadtech.com.tw</a
         >
       </el-form>
     </el-card>
@@ -47,6 +49,13 @@
 
 <script>
 export default {
+  created(){
+    localStorage.clear()
+    if(!localStorage.getItem("jwt")){
+      localStorage.setItem("jwt","")
+    }
+    
+  },
   name: "login",
   data() {
     return {
@@ -59,28 +68,7 @@ export default {
         password: "",
       },
       loading: false,
-      rules: {
-        username: [
-          {
-            required: true,
-            message: "Username is required",
-            trigger: "blur",
-          },
-          {
-            min: 4,
-            message: "Username length should be at least 5 characters",
-            trigger: "blur",
-          },
-        ],
-        password: [
-          { required: true, message: "Password is required", trigger: "blur" },
-          {
-            min: 5,
-            message: "Password length should be at least 5 characters",
-            trigger: "blur",
-          },
-        ],
-      },
+      
     };
   },
   methods: {
@@ -148,6 +136,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.login {
+  margin: 0;
+  padding: 0;
+  background: #102a43;
+  background-image: url("https://uploads.codesandbox.io/uploads/user/c3fb8e8a-35ea-4232-b5d6-0f3c5373510b/LVs7-dots.png");
+  background-size: contain;
+}
+
 .login {
   flex: 1;
   display: flex;
@@ -206,11 +203,12 @@ $teal: rgb(0, 124, 137);
   padding-bottom: 30px;
 }
 
-h2 {
+.item {
+
   font-family: "Open Sans";
   letter-spacing: 1px;
   font-family: Roboto, sans-serif;
-  padding-bottom: 20px;
+  // padding-bottom: 20px;
 }
 
 a {
@@ -227,4 +225,11 @@ a {
   display: flex;
   justify-content: center;
 }
+
+.top{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 </style>

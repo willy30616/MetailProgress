@@ -8,7 +8,7 @@ import store from './store'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import { TableColumn } from 'element-ui';
-
+import './element-variables.scss';
 
 Vue.use(ElementUI);
 Vue.config.productionTip = false

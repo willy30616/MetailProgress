@@ -1,13 +1,23 @@
 <template>
-  <!-- 父階 -->
+  
   <div>
+    <!-- 父階 -->
     <div v-if="fatherChecked">
       <el-table
+      
         :data="pagedTableDataFather"
         stripe
-        style="width: 100% "
+        style="width: 100% ;background:#005792"
         border
         :row-style="{ height: '80px' }"
+        :header-cell-style="{
+        'background-color': '#005792',
+        'color': '#caf0f8',
+        'font-weight': '200',
+        'border-radius':'5px' }
+
+        "
+        
       >
         <el-table-column type="index" :index="indexMethod" label="序">
         </el-table-column>
@@ -17,6 +27,7 @@
           align="center"
           prop="c_sname"
           label="客戶簡稱"
+          width="80"
         >
         </el-table-column>
         <el-table-column
@@ -24,6 +35,7 @@
           align="center"
           prop="o_custbillcode"
           label="客戶單號"
+          width="110"
         >
         </el-table-column>
         <el-table-column
@@ -31,6 +43,7 @@
           align="center"
           prop="o_date"
           label="訂單日期"
+          width="100"
         >
         </el-table-column>
         <el-table-column
@@ -38,6 +51,7 @@
           align="center"
           prop="o_targetdate"
           label="預交日期"
+          width="100"
         >
         </el-table-column>
         <el-table-column
@@ -45,6 +59,7 @@
           align="center"
           prop="o_prodno"
           label="產品編號"
+          width="200"
         >
         </el-table-column>
         <el-table-column
@@ -52,6 +67,7 @@
           align="center"
           prop="p_name"
           label="產品名稱"
+          width="200"
         >
         </el-table-column>
         <el-table-column align="center" prop="o_qty" label="訂單數" width="80">
@@ -63,7 +79,7 @@
           width="80"
         >
         </el-table-column>
-        <el-table-column prop="b_process" label="製成進度" width="300">
+        <el-table-column prop="b_process" label="製成進度" >
           <template slot-scope="scope">
             <el-badge
               v-for="item in scope.row.b_process"
@@ -88,8 +104,9 @@
         </el-pagination>
       </div>
     </div>
+
+    <!-- 子階 -->
     <div v-else>
-      <!-- 子階 -->
       <el-table
         :data="pagedTableDataChild"
         stripe
@@ -105,6 +122,7 @@
           align="center"
           prop="c_sname"
           label="客戶簡稱"
+          width="80"
         >
         </el-table-column>
         <el-table-column
@@ -112,6 +130,7 @@
           align="center"
           prop="o_custbillcode"
           label="客戶單號"
+          width="110"
         >
         </el-table-column>
         <el-table-column
@@ -119,6 +138,7 @@
           align="center"
           prop="o_date"
           label="訂單日期"
+          width="100"
         >
         </el-table-column>
         <el-table-column
@@ -126,6 +146,7 @@
           align="center"
           prop="o_targetdate"
           label="預交日期"
+          width="100"
         >
         </el-table-column>
         <el-table-column
@@ -133,6 +154,7 @@
           align="center"
           prop="o_prodno"
           label="產品編號"
+          width="200"
         >
         </el-table-column>
         <el-table-column
@@ -140,6 +162,7 @@
           align="center"
           prop="p_name"
           label="產品名稱"
+          width="200"
         >
         </el-table-column>
         <el-table-column align="center" prop="o_qty" label="訂單數" width="80">
@@ -151,7 +174,7 @@
           width="80"
         >
         </el-table-column>
-        <el-table-column prop="b_process" label="製成進度" width="300">
+        <el-table-column prop="b_process" label="製成進度" >
           <template slot-scope="scope">
             <!-- {{ scope.row.b_process_mp_over }} -->
             <el-badge
@@ -160,7 +183,7 @@
               :value="scope.row.o_qty"
               class="item"
             >
-              <el-tag v-if="item.mp_over" type="success"
+              <el-tag v-if="item.mp_over" type="primary"
                 >{{ convertString(item.mp_process) }}
                 {{ item.mp_process }}</el-tag
               >
@@ -173,6 +196,8 @@
         </el-table-column>
       </el-table>
     </div>
+
+    <!-- 分頁 -->
     <div v-if="!fatherChecked">
       <el-pagination
         layout="sizes,prev, pager, next"
@@ -305,6 +330,7 @@ export default {
 };
 </script>
 <style scoped>
+
 .el-badge {
   margin: 20px 10px;
 }

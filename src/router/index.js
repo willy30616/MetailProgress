@@ -1,6 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-// import Home from "../views/Home.vue";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 
@@ -10,14 +9,14 @@ const routes = [{
         path: "/",
         name: "Login",
         component: () =>
-            import ( /* webpackChunkName: "about" */ "../views/Login.vue")
+            import ("../views/Login.vue")
     },
     {
         path: "/Home",
         name: "Home",
 
         component: () =>
-            import ( /* webpackChunkName: "about" */ "../views/Home.vue"),
+            import ( "../views/Home.vue"),
         meta: { requireAuth: true }
     },
     {

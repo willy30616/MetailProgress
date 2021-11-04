@@ -51,7 +51,7 @@
 </style>
 
 <style lang="scss">
-$teal: rgb(0, 124, 137);
+// $teal: rgb(0, 124, 137);
 .el-button--primary {
   background: $teal;
   border-color: $teal;

@@ -1,9 +1,10 @@
 <template>
   <div>
     <div class="navbar">
-      <el-button type="primary">登出</el-button>
+      <el-button @click="logout" type="primary">登出</el-button>
     </div>
-    <div class="app-container">
+
+    <el-card class="app-container">
       <el-row style="margin:5px">
         <el-collapse v-model="activeNames" @change="handleChange">
           <el-collapse-item name="1">
@@ -155,7 +156,7 @@
           </el-collapse-item>
         </el-collapse>
       </el-row>
-    </div>
+    </el-card>
 
     <datatable
       v-bind:fatherChecked="father"
@@ -166,6 +167,7 @@
       v-bind:o_prodno="o_prodno"
       v-bind:p_name="p_name"
     ></datatable>
+    
   </div>
 </template>
 
@@ -177,6 +179,7 @@ export default {
   data() {
     return {
       activeNames: ["1"],
+
 
       father: true,
       c_sname: true,
@@ -331,7 +334,9 @@ export default {
     convertArray1(str) {
       return str.split(",");
     },
-    compose() {}
+    logout() {
+      this.$router.replace({ name: "Login" })
+    }
   }
 };
 </script>
@@ -355,6 +360,7 @@ html {
 }
 .app-container {
   text-align: left;
+  margin-bottom: 10px;
 }
 .el-col {
   margin-bottom: 20px;
