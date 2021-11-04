@@ -3,14 +3,8 @@ import "./plugins/axios";
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import "./plugins/element.js";
 
-
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-import { TableColumn } from 'element-ui';
-import './element-variables.scss';
-
-Vue.use(ElementUI);
 Vue.config.productionTip = false
 
 new Vue({
@@ -19,7 +13,3 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-export default {
-  name: 'ExTableColumn',
-  extends: TableColumn, // 指定继承组件
-};

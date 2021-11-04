@@ -146,7 +146,7 @@
             </el-col>
 
             <el-col :xs="24" :sm="2" :md="2" :lg="12">
-              <el-button type="danger" icon="el-icon-close">
+              <el-button @click="clear" type="danger" icon="el-icon-close">
                 清除
               </el-button>
               <el-button @click="search" type="primary" icon="el-icon-search">
@@ -313,6 +313,10 @@ export default {
 
         this.$store.commit("tableDatas", arr);
       });
+    },
+    clear(){
+      this.$store.state.single=[];
+      this.$store.state.lists=[];
     },
     convertDate(date) {
       const d = new Date(date);

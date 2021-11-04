@@ -101,9 +101,9 @@ export default {
             );
             const loading = this.$loading({
               lock: true,
-              text: "Loading",
+              text: "載入中...",
               spinner: "el-icon-loading",
-              background: "rgba(0, 0, 0, 0.7)"
+              background: "rgba(255, 255, 255, 0.7)"
             });
             setTimeout(() => {
               loading.close();
@@ -137,13 +137,13 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-.login {
+/* .login {
   margin: 0;
   padding: 0;
   background: #102a43;
   background-image: url("https://uploads.codesandbox.io/uploads/user/c3fb8e8a-35ea-4232-b5d6-0f3c5373510b/LVs7-dots.png");
   background-size: contain;
-}
+} */
 
 .login {
   flex: 1;

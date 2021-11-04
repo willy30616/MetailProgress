@@ -7,14 +7,14 @@
       
         :data="pagedTableDataFather"
         stripe
-        style="width: 100% ;background:#005792"
+        style="width: 100% ;"
         border
         :row-style="{ height: '80px' }"
         :header-cell-style="{
-        'background-color': '#005792',
-        'color': '#caf0f8',
+        'background-color': '#4c5870',
+        'color': 'white',
         'font-weight': '200',
-        'border-radius':'5px' }
+        'border-radius':'4px' }
 
         "
         
@@ -72,22 +72,23 @@
         </el-table-column>
         <el-table-column align="center" prop="o_qty" label="訂單數" width="80">
         </el-table-column>
-        <el-table-column
+        <!-- <el-table-column
           align="center"
           prop="o_billqty"
           label="出貨數"
           width="80"
         >
-        </el-table-column>
-        <el-table-column prop="b_process" label="製程進度" >
+        </el-table-column> -->
+        <el-table-column prop="b_process" label="製程進度" fixed="right">
           <template slot-scope="scope">
+            <!-- {{scope.row}} -->
             <el-badge
               v-for="item in scope.row.b_process"
               :key="item"
-              :value="1"
+              :value="scope.row.o_qty"
               class="item"
             >
-              <el-tag type="info">{{ convertString(item) }}</el-tag>
+              <el-tag type="info" effect="dark">{{ convertString(item) }}{{ item }}</el-tag>
             </el-badge>
           </template>
         </el-table-column>
@@ -112,7 +113,15 @@
         stripe
         style="width: 100% "
         border
+        
         :row-style="{ height: '80px' }"
+        :header-cell-style="{
+        'background-color': '#4c5870',
+        'color': 'white',
+        'font-weight': '200',
+        'border-radius':'4px' }
+
+        "
       >
         <el-table-column type="index" :index="indexMethod" label="序">
         </el-table-column>
@@ -167,27 +176,29 @@
         </el-table-column>
         <el-table-column align="center" prop="o_qty" label="訂單數" width="80">
         </el-table-column>
-        <el-table-column
+        <!-- <el-table-column
           align="center"
           prop="o_billqty"
           label="出貨數"
           width="80"
         >
-        </el-table-column>
-        <el-table-column prop="b_process" label="製成進度" >
+        </el-table-column> -->
+        <el-table-column prop="b_process" label="製成進度"  >
           <template slot-scope="scope">
-            <!-- {{ scope.row.b_process_mp_over }} -->
+            <!-- {{ scope.row }} -->
             <el-badge
               v-for="(item, index) in scope.row.b_process_mp_over"
               :key="index"
               :value="scope.row.o_qty"
               class="item"
             >
-              <el-tag v-if="item.mp_over" type="primary"
+              <el-tag v-if="item.mp_over" type="success"
+              effect="dark"
                 >{{ convertString(item.mp_process) }}
                 {{ item.mp_process }}</el-tag
               >
               <el-tag v-else type="info"
+              effect="dark"
                 >{{ convertString(item.mp_process) }}
                 {{ item.mp_process }}</el-tag
               >
@@ -232,14 +243,16 @@ export default {
       tableData1: [],
       process: [
         { mpNo: "false", mpName: "未完工" },
-        { mpNo: "true", mpName: "完  工" }
+        { mpNo: "true", mpName: "完  工" },
+        { mpNo: null, mpName: "無" },
+        { mpNo: "", mpName: "無" },
       ],
       afterprocess: [],
       active: 0,
 
       page: 1,
       pageSize: 5,
-      pageSizes: [1, 3, 5]
+      pageSizes: [1, 3, 10]
     };
   },
   methods: {
